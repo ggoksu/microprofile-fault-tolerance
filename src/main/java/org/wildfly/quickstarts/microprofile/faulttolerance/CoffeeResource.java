@@ -23,6 +23,7 @@ public class CoffeeResource {
     private AtomicLong counter = new AtomicLong(0);
 
     @GET
+    @Retry(maxRetries = 4)
     public List<Coffee> coffees() {
         final Long invocationNumber = counter.getAndIncrement();
 
